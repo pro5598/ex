@@ -4,10 +4,10 @@ const app = express();
 
 const PORT = 6969;
 
-const { router } = require("./routes/userRoute");
+const { router } = require("./routes/productRoute");
 
 app.use(express.json());
-app.use("/api", router);
+app.use(router);
 
 app.listen(PORT, () => {
   console.log("Connected");

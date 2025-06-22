@@ -28,4 +28,9 @@ const createEmployee = async (req, res) => {
     return res.status(500).json("Error while fetching");
   }
 };
-module.exports = { getAllEmployee, createEmployee };
+
+
+module.exports = {
+  getAllEmployee,
+  createEmployee,
+};
