@@ -18,10 +18,10 @@ const getAllEmployee = async (req, res) => {
 const saveAllEmployee = async (req, res) => {
   console.log(req.body);
 
-  const { name, userId } = req.body;
+  const { name, userID } = req.body;
   try {
-    const user = await IntersectionObserver.findOne({
-      where: { userId: userId },
+    const user = await Users.findOne({
+      where: { userID: userID },
     });
 
     if (user == null) {
