@@ -15,22 +15,26 @@ const getAllEmployee = async (req, res) => {
   }
 };
 
-const createEmployee = async (req, res) => {
-  const { name } = req.body;
+const saveAllEmployee = async (req, res) => {
+  console.log(req.body);
+
+  const { name, userId } = req.body;
   try {
-    const users = await Users.create({
-      name: name,
+    const user = await IntersectionObserver.findOne({
+      where: { userId: userId },
     });
 
-    res.status(200).send({ message: "Successfully create data" });
+    if (user == null) {
+      await Users.create(req.body);
+      return res.status(201).json({ message: "Users Added Successfully" });
+    }
+    return res.status(500).json({ messgae: "user is already present" });
   } catch (error) {
     console.log(error);
-    return res.status(500).json("Error while fetching");
   }
 };
 
-
 module.exports = {
   getAllEmployee,
-  createEmployee,
+  saveAllEmployee,
 };

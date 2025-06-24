@@ -1,12 +1,12 @@
 const express = require("express");
 const {
   getAllEmployee,
-  createEmployee,
+  saveAllEmployee,
 } = require("../controller/userController");
 
 const router = express.Router();
 router.use(express.json());
 router.get("/users", getAllEmployee);
-router.post("/users", createEmployee);
+router.post("/users", saveAllEmployee);
 
 module.exports = { router };
